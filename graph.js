@@ -384,7 +384,7 @@ svg.append("defs")
   .selectAll("stop")
   .data([
     { offset: "0%", color: "#88bfe7" },
-    { offset: "50%", color: "#c2def2" },
+    { offset: "70%", color: "#c2def2" },
     { offset: "100%", color: "#ebebf8" }
   ])
   .enter()
@@ -400,14 +400,20 @@ const legendData = [
   { label: "External links", type: "icon"},
 ];
 
+// Legend spacing settings
+const topPadding = 20;
+const itemHeight = 20;
+const groupGap = 12;
+
+// Legend group
 const legend = svg.append("g")
   .attr("class", "legend")
-  .attr("transform", `translate(${width - 260}, 30)`); // top-right corner
+  .attr("transform", `translate(${width - 260}, 30)`);
 
-// Background box
+// Background box (fixed compact height)
 legend.append("rect")
   .attr("width", 240)
-  .attr("height", 150)
+  .attr("height", topPadding + legendData.length * itemHeight + groupGap)
   .attr("rx", 8)
   .attr("ry", 8)
   .attr("fill", "white")
@@ -420,7 +426,11 @@ const legendItem = legend.selectAll(".legend-item")
   .enter()
   .append("g")
   .attr("class", "legend-item")
-  .attr("transform", (d, i) => `translate(20, ${30 + i * 24})`);
+  .attr("transform", (d, i) => {
+    // Add extra gap after the first 3 circle items
+    const extraSpacing = i > 2 ? groupGap : 0;
+    return `translate(20, ${topPadding + i * itemHeight + extraSpacing})`;
+  });
 
 // Colored circles
 legendItem
