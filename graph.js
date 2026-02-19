@@ -146,18 +146,6 @@ function computeCircleRadius(d, maxWidth = TEXT_MAX_WIDTH, fontSize = 12, basePa
   const name = d.attributes?.name;
   const extraPadding = EXTRA_PADDING_BY_NAME[name] ?? 0;
   const padding = basePadding + extraPadding;
-  //! Old version to dynamically define extra padding
-  // First / last words to detect very long words that would require more padding
-  // const rawText = manualBreaks[d.attributes.name] || d.attributes.name;
-  // const words = rawText.replace(/\n+/g, " ").trim().split(/\s+/);
-  // const firstWord = words[0];
-  // const lastWord = words[words.length - 1];
-  // const firstWordWidth = context.measureText(firstWord).width;
-  // const lastWordWidth = context.measureText(lastWord).width;
-  // const LONG_WORD_THRESHOLD = maxWidth * 0.9;
-  // const longFirstOrLast = firstWordWidth > LONG_WORD_THRESHOLD || lastWordWidth > LONG_WORD_THRESHOLD;
-  // const isLongText = lines.length >= 4;
-  // if (longFirstOrLast && isLongText) {padding = 16;}
 
   // Final circle radius
   const radius = Math.max(maxLineWidth / 2, verticalSize / 2) + padding;
@@ -467,11 +455,11 @@ legendItem.append("text")
   .style("fill", "#333");
 
 // Add graph title
-svg.append("text")
-  .attr("x", 30)              // 20px from the left edge
-  .attr("y", 50)              // 40px from the top edge
-  .text("HIMO Archives Cartography")
-  .style("font-size", "26px")
-  .style("font-weight", "bold")
-  .style("fill", "#333")
-  .style("pointer-events", "none"); // ensures it doesn't block panning/zooming
+// svg.append("text")
+//   .attr("x", 30)              // 20px from the left edge
+//   .attr("y", 50)              // 40px from the top edge
+//   .text("HIMO Archives Cartography")
+//   .style("font-size", "26px")
+//   .style("font-weight", "bold")
+//   .style("fill", "#333")
+//   .style("pointer-events", "none"); // ensures it doesn't block panning/zooming
