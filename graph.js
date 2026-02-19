@@ -381,11 +381,11 @@ svg.append("defs")
   .attr("stop-color", d => d.color);
 
 const legendData = [
-  { label: "Archives in HIMO fonds", color: "url(#himo-gradient)", type: "circle"},
-  { label: "Possible extra-archives", color: "#56beb9", type: "circle"},
-  { label: "Archives of Contextualization", color: "#bc98df", type: "circle"},
-  { label: "Expandable node", type: "dashed"},
-  { label: "External links", type: "icon"},
+  { label: "HIMO fonds", color: "url(#himo-gradient)", type: "circle" },
+  { label: "Possible extra-fonds", color: "#56beb9", type: "circle" },
+  { label: "Contextual fonds", color: "#bc98df", type: "circle" },
+  { label: "Expandable node", type: "dashed" },
+  { label: "External link", type: "icon" },
 ];
 
 // Legend spacing settings
@@ -394,13 +394,14 @@ const itemHeight = 20;
 const groupGap = 12;
 
 // Legend group
+const legendWidth = 175;
 const legend = svg.append("g")
   .attr("class", "legend")
-  .attr("transform", `translate(${width - 260}, 30)`);
+  .attr("transform", `translate(${width - legendWidth - 20}, 20)`);
 
 // Background box (fixed compact height)
 legend.append("rect")
-  .attr("width", 240)
+  .attr("width", legendWidth)
   .attr("height", topPadding + legendData.length * itemHeight + groupGap)
   .attr("rx", 8)
   .attr("ry", 8)
