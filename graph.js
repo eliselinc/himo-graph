@@ -465,3 +465,13 @@ legendItem.append("text")
   .text(d => d.label)
   .style("font-size", "12px")
   .style("fill", "#333");
+
+// Add graph title
+svg.append("text")
+  .attr("x", 30)              // 20px from the left edge
+  .attr("y", 50)              // 40px from the top edge
+  .text("HIMO Archives Cartography")
+  .style("font-size", "26px")
+  .style("font-weight", "bold")
+  .style("fill", "#333")
+  .style("pointer-events", "none"); // ensures it doesn't block panning/zooming
